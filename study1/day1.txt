@@ -1,0 +1,99 @@
+JSX
+리액트와 마찬가지로 페이스북에서 개발한 확장 구문입니다. 리액트에서는 UI를 화면에
+나타내는 파일을 만들어가는 것이므로 HTML을 표현하려면 DOM을 구축해야 합니다.
+JavaScript나 리액트가 제공하는 API로 개발하면 코드양이 많아질 수 있기 때문에
+JSX를 이용하여 개발자가 쉽게 코드를 기술할 수 있도록 접근하는 방법을 제시합니다.
+(http://facebook.github.io/jsx/)
+
+- 태그는 꼭 ! 닫혀야합니다.
+<img src="apple.jpg"/>
+두개 이상의 태그는 무조건 하나의 태그로 감싸져야합니다.
+- CSS 속성은 스네이크 표기법 -> 카멜케이스표기법
+(background-color - > backgroundColor) 이런식으로 바까줘야한다.
+-주석은 {/* */} 표현합니다.
+
+props
+props는 컴포넌트에 값을 전달할 때 사용하는 매개변수 같은 역할을 합니다.
+
+비구조화 할당
+비구조화 할당 문법을 사용하면 객체 안에 있는 값을 추출해서 변수 혹은 상수로 바로 선언하면
+할당할 수 있습니다.
+
+
+
+
+defaultProps
+컴포넌트에 props를 지정하지 않았을 때 기본적으로 사용할 값을 설정하려면 defaultProps를 사용합니다.
+
+컴포넌트.defaultProps = {
+	...
+}
+
+
+const dog = {
+    name: '루시',
+    age:9,
+    weight:2.5
+};
+key값을 따옴표를 쓰고 안쓰고의 차이는 ' '
+
+예를들어
+//key값을 따옴표로 묶는 이유?
+const act = {
+	movie name:'ironman',
+	actor name: '토니 스타크',
+	alias:'ironman' 
+}	이러면 에러가 나는데
+
+키값이 띄어쓰기가 있기 때문이다
+이럴때 키값을 'movie name' 이렇게 띄어쓰기를 해준다면 에러가 안난다.
+
+// 객체 구조 분해
+function print({weight, name, age}){
+    console.timeLog(rucy.name);
+    console.log(`${namee}라는 강아지는 나이가 ${age}살 이고,몸무게는 ${weight}kg입니다.`);
+}
+
+print(dog);
+console.log('------------------------------');
+
+const student = {a:'김사과',b:'오렌지',c:'바나나'};
+const {a,b,c} = student;
+console.log(a);
+console.log(b);
+console.log(c);
+
+
+
+console.log('------------------------------');
+
+const users = ['김사과','반하나','오렌지'];
+const [kim,ban,oh] = users;
+console.log(kim);
+console.log(ban);
+console.log(oh);
+
+
+스프레드 문법이라고도 한다.
+
+
+
+props.children 이란?
+컴포넌트 태그 사이에 넣은 값을 조회하고 싶을 때 사용합니다.
+<Hello></Hello>
+
+조건부 랜더링
+특정 조건에 따라 다른 결과물을 랜더링 하는 것을 의미합니다.
+
+
+<div style={{color}}>{isSpecial ? <b>*</b> : null}
+        Hello, {name}!</div>
+-> 이렇게 써도됨
+<div style={{color}}>{isSpecial && <b>*</b>}Hello,{name}!</div> 이게 더 맞는표현이다.
+
+
+
+useState 함수 (Hooks)
+리액트 16.8이전 버전에서는 함수형 컴포넌트에서는 상태관리를 할 수 없었지만
+리액트 16.8에서 Hooks라는 기능이 도입되면서 함수형 컴포넌트에서도 상태를 관리할 수 있게 되었다.
+
